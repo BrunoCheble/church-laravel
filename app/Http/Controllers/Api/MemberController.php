@@ -37,11 +37,14 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        die($id);
         $member = Member::findOrFail($id);
         return $member;
     }
 
+    public function teste()
+    {
+        die('teste');
+    }
     /**
      * Update the specified resource in storage.
      *
