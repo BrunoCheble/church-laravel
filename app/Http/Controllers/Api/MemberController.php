@@ -41,10 +41,6 @@ class MemberController extends Controller
         return $member;
     }
 
-    public function teste()
-    {
-        die('teste');
-    }
     /**
      * Update the specified resource in storage.
      *

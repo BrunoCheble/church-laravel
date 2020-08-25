@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::post('auth/login', 'Api\\AuthController@login');
 
 Route::group(['middleware' => ['apiJwt']], function() {
-    Route::get('members/teste', 'Api\\MemberController@teste');
     Route::apiResource('members','Api\\MemberController');
 });
 /*
