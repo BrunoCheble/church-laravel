@@ -37,6 +37,7 @@ class MemberController extends Controller
      */
     public function show($id)
     {
+        die($id);
         $member = Member::findOrFail($id);
         return $member;
     }
