@@ -35,6 +35,7 @@ class Member extends Model
         'baptism_church',
         'coming_church',
         'religious_formation',
-        'status'
+        'status',
+        'avatar_url'
     ];
 }

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Member;
@@ -64,5 +67,19 @@ class MemberController extends Controller
     {
         $member = Member::findOrFail($id);
         return $member->delete();
+    }
+
+    public function avatar(Request $request, $id) {
+
+        if(!$request->hasFile('avatar')) {
+            return false;
+        }
+
+        $savedFile = Storage::putFile('', $request->file('avatar'));
+
+        $member = Member::findOrFail($id);
+        $avatar_url = Storage::url($savedFile);
+        $member->update(['avatar_url' => $avatar_url]);
+        return $avatar_url;
     }
 }
