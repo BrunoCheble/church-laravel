@@ -22,6 +22,7 @@ class MemberController extends Controller
         foreach($members as &$member) {
             $member->avatar_url = $member->avatar_url && Storage::exists($member->avatar_url) ? Storage::url($member->avatar_url) : '';
         }
+
         return $members;
     }
 
