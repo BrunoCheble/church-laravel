@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Member;
@@ -15,7 +18,11 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return Member::all();
+        $members = Member::all();
+        foreach($members as &$member) {
+            $member->avatar_url = $member->avatar_url ? Storage::url($member->avatar_url) : '';
+        }
+        return $members;
     }
 
     /**
