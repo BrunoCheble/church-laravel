@@ -19,6 +19,7 @@ class MemberController extends Controller
     public function index()
     {
         $members = Member::all();
+        dd(Storage::url('BHjxQAwlOlhDIMQeYy2TcNuRtDNIlummKxJbD8Tl.jpeg'));
         foreach($members as &$member) {
             $member->avatar_url = '....';
         }
