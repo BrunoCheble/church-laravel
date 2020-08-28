@@ -11,11 +11,6 @@ use App\Models\Member;
 
 class AvatarController extends Controller
 {
-    public function show($file)
-    {
-        return Storage::exists($file) ? Storage::response($file) : '';
-    }
-
     public function store(Request $request, $id) {
 
         if(!$request->hasFile('avatar')) {
