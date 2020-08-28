@@ -19,11 +19,11 @@ class MemberController extends Controller
     public function index()
     {
         $members = Member::all();
+        dd($members);
         foreach($members as &$member) {
             $member->avatar_url = $member->avatar_url ? Storage::url($member->avatar_url) : '';
         }
 
-        dd($members);
         return $members;
     }
 
