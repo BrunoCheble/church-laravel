@@ -17,11 +17,13 @@ class MemberController extends Controller
     {
         $members = Member::all();
         dd($members);
+        /*
         foreach($members as &$member) {
             $member->avatar_url = $member->avatar_url ? ($member->avatar_url) : '';
         }
 
         return $members;
+        */
     }
 
     /**
