@@ -15,15 +15,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $members = Member::all();
-        dd($members);
-        /*
-        foreach($members as &$member) {
-            $member->avatar_url = $member->avatar_url ? ($member->avatar_url) : '';
-        }
-
-        return $members;
-        */
+        return Member::all();
     }
 
     /**
@@ -46,7 +38,6 @@ class MemberController extends Controller
     public function show($id)
     {
         $member = Member::findOrFail($id);
-        $member->avatar_url = $member->avatar_url ? ($member->avatar_url) : '';
         return $member;
     }
 
@@ -60,7 +51,6 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
         $member = Member::findOrFail($id);
-        $member->avatar_url = $member->avatar_url ? ($member->avatar_url) : '';
         return $member->update($request->all());
     }
 
