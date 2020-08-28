@@ -19,9 +19,8 @@ class MemberController extends Controller
     public function index()
     {
         $members = Member::all();
-        dd(Storage::url('BHjxQAwlOlhDIMQeYy2TcNuRtDNIlummKxJbD8Tl.jpeg'));
         foreach($members as &$member) {
-            $member->avatar_url = '....';
+            $member->avatar_url = $member->avatar_url && Storage::exists($member->avatar_url) ? Storage::url($member->avatar_url) : '';
         }
         return $members;
     }
@@ -46,6 +45,7 @@ class MemberController extends Controller
     public function show($id)
     {
         $member = Member::findOrFail($id);
+        $member->avatar_url = $member->avatar_url && Storage::exists($member->avatar_url) ? Storage::url($member->avatar_url) : '';
         return $member;
     }
 
@@ -59,6 +59,7 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
         $member = Member::findOrFail($id);
+        $member->avatar_url = $member->avatar_url && Storage::exists($member->avatar_url) ? Storage::url($member->avatar_url) : '';
         return $member->update($request->all());
     }
 
