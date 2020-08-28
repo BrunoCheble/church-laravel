@@ -13,7 +13,7 @@ class AvatarController extends Controller
 {
     public function show($file)
     {
-        return Storage::response($file);
+        return Storage::exists($file) ? Storage::response($file) : '';
     }
 
     public function store(Request $request, $id) {
