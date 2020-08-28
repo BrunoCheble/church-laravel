@@ -23,6 +23,7 @@ class MemberController extends Controller
             $member->avatar_url = $member->avatar_url ? Storage::url($member->avatar_url) : '';
         }
 
+        dd($members);
         return $members;
     }
 
