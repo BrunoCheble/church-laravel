@@ -19,8 +19,9 @@ Route::apiResource('users','Api\\UserController');
 
 Route::group(['middleware' => ['apiJwt']], function() {
     Route::apiResource('members','Api\\MemberController');
-    Route::post('members/{id}/avatar', 'Api\\MemberController@avatar');
+    Route::post('members/{id}/avatar', 'Api\\AvatarController@store');
 });
+Route::get('avatar/show/{file}', 'Api\\AvatarController@show');
 /*
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
